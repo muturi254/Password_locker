@@ -3,11 +3,11 @@ from userp import User
 import pyperclip
 
 
-def create_user(fname, lname, email, Id):
+def create_user(first_name, last_name, email, Id):
     '''
     Function to create a new User
     '''
-    new_user = User(fname, lname, email, Id)
+    new_user = User(first_name, last_name, email, Id)
     return new_user
 
 
@@ -34,7 +34,7 @@ def find_user(number):
 
 def display_user():
     '''
-    Function that returns all the saved contacts
+    Function that returns all the saved users
     '''
     return User.display_user()
 
@@ -55,7 +55,7 @@ def main():
 
     while True:
             print(
-                "Use these short codes : cc - create a new user, dc - display user, fc -find a user, pp - to generate passoword, ex -exit the user list ")
+                "Use these short codes : cc - create a new user, dc - display user, fc -find a user, pp - to generate passoword, ll- login, ex -exit the user list ")
 
             short_code = input().lower()
 
@@ -90,7 +90,7 @@ def main():
 
                             for user in display_user():
                                     print(
-                                        f"{user.first_name} {user.last_name} .....{user.email}")
+                                        f"{ user.Id} ....{user.first_name} {user.last_name} .....{user.email}")
 
                             print('\n')
                     else:
@@ -101,15 +101,17 @@ def main():
 
             elif short_code == 'fc':
 
-                    print("Enter the number you want to search for")
+                    print("Enter the account Id of user you want to search for")
 
                     search_Id = input()
                     if check_existing_user(search_Id):
                             search_user = find_user(search_Id)
-                            print(f"{search_user.f_name} {search_user.l_name}")
+                            print(f"{search_user.first_name} {search_user.last_name}")
                             print('-' * 20)
 
-                            print(f"Phone number.......{search_user.Id}")
+                            print(f"Id.......{search_user.first_name}")
+                            print(f"Id.......{search_user.last_name}")
+                            print(f"Id.......{search_user.Id}")
                             print(f"Email address.......{search_user.email}")
                     else:
                             print("That user does not exist")
@@ -139,6 +141,25 @@ def main():
                     print("bye")
                 else:
                     print("wrong input")
+            
+            elif short_code == 'll':
+                print("Hello Dear cutomer welcome back ")
+                print("enter username")
+                user_id = input()
+                print("enter Id")
+                user_id = input()
+                if check_existing_user(user_id):
+                    print("welcome home ")
+                    print("**"*10)
+                    print("**"*10)
+                    print("**"*10)
+                    print("**"*10)
+                    print("**"*10)
+                    print("**"*10)
+                else:
+                    print("user doesnt exist")
+                
+
             elif short_code == "ex":
                     print("Bye .......")
                     break

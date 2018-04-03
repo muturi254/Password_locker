@@ -10,6 +10,7 @@ class User:
         self.Id = Id
 
     def save_user(self):
+        print("su works")
         self.user_list.append(self)
 
     def delete_user(self):
@@ -17,14 +18,6 @@ class User:
 
     @classmethod
     def find_user_Id(cls, id):
-        '''
-        m
-        Args:
-            number: Phone number to search for
-        Returns :
-            Contact of person that matches the number.
-        '''
-
         for user in cls.user_list:
             if user.Id == id:
                 return user
@@ -43,7 +36,7 @@ class User:
 
         return False
     @classmethod
-    def user_exists(cls, first_name):
+    def user_exists(cls, Id):
         '''
         method to check if credential exists
         Args:
@@ -51,8 +44,7 @@ class User:
         boolean:
                 true or false 
         '''
-
         for user in cls.user_list:
-            if user.first_name == first_name:
+            if user.Id == Id:
                 return True
         return False
